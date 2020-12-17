@@ -3,38 +3,42 @@ const http = require('http');
 const port = process.env.PORT || 3000;
 const fs = require('fs');
 
-const server = http.createServer((req, res) => {
-  // console.log(req);
-  console.log(req.url);
-
-  // set header content type
-  res.setHeader('Content-Type', 'text/html');
-  // routing
-  let path = './views/';
-  switch(req.url) {
-    case '/':
-      path += 'index.html';
-      res.statusCode = 200;
-      break;
-    default:
-      path += '404.html';
-      res.statusCode = 404;
-  }
-
-  // send html
-  fs.readFile(path, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.end();
+fs.readFile('./views/index.html', (err, html) =>{
+    if (err){
+        throw err;
     }
-    //res.write(data);
-    res.end(data);
-  });
+    const server = http.createServer((req,res) => {
+        // send html
+        res.statusCode = 200;
+        if(req.url == '/'){
+        // set header content type
+        res.setHeader('Content-type', 'text/html');
+        res.write(html);
+        res.end();
+        res.statusCode = 200;
+        } 
+         // send css
+        else if(req.url == '/public/style/style.css'){
+            res.setHeader('Content-type', 'text/css');
+            res.write(fs.readFileSync('./public/style/style.css'));
+            res.end();
+        } else {
+            // send err page
+            res.setHeader('Content-type', 'text/html');
+            res.write(fs.readFileSync('./views/404.html'));
+            res.end();
+            res.statusCode = 404;
+        }
 
+    });
 
-});
 
 // localhost is the default value for second argument
-server.listen(port, 'localhost', () => {
-    console.log(`Server is listening on ${port}`);
+server.listen(port,'localhost', (err) => {
+    if (err) {
+        console.log(`Error: ${err}`)
+    } else {
+        console.log(`Server is listening on ${port}`);
+    }
+});
 });
