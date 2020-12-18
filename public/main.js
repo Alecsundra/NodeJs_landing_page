@@ -12,7 +12,7 @@ function myFunction() {
         if (data.length > 0){
             // This is the JSON from our response, retireving a list and taking only the name pf the repo
             data.forEach(function (item) {
-                result += "<li>" + item.full_name.replace("Alecsundra/", "");
+                result += "<li>" + item.full_name.substring(item.full_name.indexOf("/") + 1);
             });
                 console.log(data[0].full_name);
                 document.getElementById("demo").innerHTML = result;
