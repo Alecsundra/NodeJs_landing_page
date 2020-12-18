@@ -3,83 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/public/style/style.css">
-    <title>Nodejs_landing</title>
+    <link rel="stylesheet" type="text/css" href="/style/style.css">
+    <title>Nodejs_landingPage</title>
 </head>
 <body>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#slideshow">Slidshow</a></li>
-                <li><a href="#form">Form</a></li>
-              </ul>
-        </nav>
-        <header id="home">
-            <h5>Frontend Developer Technical Test</h5>
-        </header>
-        <main>
-            <section id="slideshow">
-              <!-- <h4>slideshow</h4> -->
-              <div class="fling-minislide">
-                <img src="../public/img/1.jpg" alt="Slide 4" style="width:100%"/>
-                <img src="../public/img/2.jpg" alt="Slide 3" style="width:100%" />
-                <img src="../public/img/3.jpg" alt="Slide 2" style="width:100%" />
-              </div>
-            </section>
-            <section id="form">
-                <div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#slideshow">Slidshow</a></li>
+            <li><a href="#form">Form</a></li>
+        </ul>
+    </nav>
+    <header id="home">
+        <h5>Frontend Developer Technical Test</h5>
+    </header>
+    <main>
+        <section id="slideshow">
+        <div>
+            <h4>Slideshow</h4>
+        </div>
+        <div class="fling-minislide">
+            <img src="/img/1.jpg" alt="Slide 1" />
+            <img src="/img/2.jpg" alt="Slide 2"  />
+            <img src="/img/3.jpg" alt="Slide 3"  />
+            <img src="/img/4.jpg" alt="Slide 4"  />
+            <img src="/img/5.jpg" alt="Slide 5"  />
+            
+        </div>
+        </section>
+        <section id="form">
+            <div>
                 <h4>Form</h4>
                 <p>Please enter the Github username and check the public repos</p>
                 <form>
                     <input id="numb">
                     <button class='btn' type="button" onclick=myFunction()>Check</button>
                     <ol id="demo"></ol> 
-                 </form> 
-                </div>
-            </section>
-            <footer>
-                <div>
-                    <a href="https://www.linkedin.com/in/alexandrina-serediuc-a33678195/" target="_blank">
-                        <i class="fab fa-linkedin fa-2x"></i>
-                    </a>
-                    <a href="https://github.com/Alecsundra" target="_blank">
-                        <i class="fab fa-github fa-2x"></i>
-                    </a>
-                </div>
-                &copy; Copyright 2020
-            </footer>
-        </main>
-        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-        <!-- <script type="application/json" src="/public/main.js"></script> -->
-        <script>
-        function myFunction() {
-            var x, text, result;
-            
-            // Get the value of the input field with id="numb"
-            x = document.getElementById("numb").value;
-            console.log(x)
-            fetch(`https://api.github.com/users/${x}/repos`)
-            .then(function (response) {
-                // The API call was successful!
-                return response.json();
-            }).then(function (data) {
-                if (data.length > 0){
-                    // This is the JSON from our response, retireving a list and taking only the name pf the repo
-                    data.forEach(function (item) {
-                        result += "<li>" + item.full_name.replace("Alecsundra/", "");
-                    });
-                        console.log(data[0].full_name);
-                        document.getElementById("demo").innerHTML = result;
-                        
-                } else {
-                    document.getElementById("demo").innerHTML =('Oops, this user do not have any public repos!');
-                }
-            }).catch(function (err) {
-                // There was an error
-                console.warn('Something went wrong.', err);
-            });
-
-        }
-            </script>
+                </form> 
+            </div>
+        </section>
+        <footer>
+            <div>
+                <a href="https://www.linkedin.com/in/alexandrina-serediuc-a33678195/" target="_blank">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+                <a href="https://github.com/Alecsundra" target="_blank">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+            </div>
+            &copy; Copyright 2020
+        </footer>
+    </main>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="/main.js"></script>
 </body>
 </html>
