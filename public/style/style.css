@@ -177,3 +177,14 @@ footer a {
         font-size: 1.25rem;
     }  
 }
+
+
+/* 404 PAGE */
+.error {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2rem;
+    color:#eeeeee;
+    background-color:#d72323 ;
+}
