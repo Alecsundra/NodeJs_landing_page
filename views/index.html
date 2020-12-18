@@ -23,18 +23,59 @@
               
             </section>
             <section id="form">
+                <div>
                 <h4>Form</h4>
+                <p>Please enter the user name</p>
+                <form>
+                    <input id="numb">
+                    <button type="button" onclick=myFunction()>Submit</button>
+                    <ol id="demo"></ol> 
+                 </form> 
+                </div>
             </section>
             <footer>
+                <div>
+                    <a href="https://www.linkedin.com/in/alexandrina-serediuc-a33678195/" target="_blank">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                    <a href="https://github.com/Alecsundra" target="_blank">
+                        <i class="fab fa-github fa-2x"></i>
+                    </a>
+                </div>
                 &copy; Copyright 2020
-                <a href="https://www.linkedin.com/in/alexandrina-serediuc-a33678195/" target="_blank">
-                    <i class="fab fa-linkedin fa-2x"></i>
-                  </a>
-                <a href="https://github.com/Alecsundra" target="_blank">
-                    <i class="fab fa-github fa-2x"></i>
-                  </a>
             </footer>
         </main>
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <!-- <script type="application/json" src="/public/main.js"></script> -->
+        <script>
+        function myFunction() {
+            var x, text, result;
+            
+            // Get the value of the input field with id="numb"
+            x = document.getElementById("numb").value;
+            console.log(x)
+            fetch(`https://api.github.com/users/${x}/repos`)
+            .then(function (response) {
+                // The API call was successful!
+                return response.json();
+            }).then(function (data) {
+                if (data.length > 0){
+                    // This is the JSON from our response, retireving a list and taking only the name pf the repo
+                    data.forEach(function (item) {
+                        result += "<li>" + item.full_name.replace("Alecsundra/", "");
+                    });
+                        console.log(data[0].full_name);
+                        document.getElementById("demo").innerHTML = result;
+                        
+                } else {
+                    document.getElementById("demo").innerHTML = ('Oops, this user do not have any public repos!');
+                }
+            }).catch(function (err) {
+                // There was an error
+                console.warn('Something went wrong.', err);
+            });
+
+        }
+            </script>
 </body>
 </html>

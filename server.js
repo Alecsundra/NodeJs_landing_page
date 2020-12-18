@@ -22,6 +22,10 @@ fs.readFile('./views/index.html', (err, html) =>{
             res.setHeader('Content-type', 'text/css');
             res.write(fs.readFileSync('./public/style/style.css'));
             res.end();
+        }else if(req.url == '/?name='){
+            res.setHeader('Content-type', 'application/json');
+            res.write(fs.readFileSync('./public/main.js'));
+            res.end();
         } else {
             // send err page
             res.setHeader('Content-type', 'text/html');
@@ -29,7 +33,6 @@ fs.readFile('./views/index.html', (err, html) =>{
             res.end();
             res.statusCode = 404;
         }
-
     });
 
 
