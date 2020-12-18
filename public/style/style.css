@@ -4,7 +4,7 @@ body{
     margin: 20px auto;
     padding: 0 20px;
     font-family: 'Noto Serif', serif;
-    background-color: #eeeeee;
+    /* background-color: #eeeeee; */
     height: 100vh;
     /* background-image: url("../img/bg.jpg");
     background-size: cover;
@@ -21,7 +21,7 @@ nav{
     justify-content: space-between;
     margin-bottom: 60px;
     padding-bottom: 10px;
-    border-bottom: 4px solid #d72323;
+    border-bottom: 6px solid #d72323;
     text-transform: uppercase;
     padding-right: 16px;
     background-color: #3c3c3c24;
@@ -52,7 +52,7 @@ li a:hover:not(.active) {
 footer {
     display: flex;
     justify-content: space-between;
-    border-top: 4px solid #d72323;
+    border-top: 6px solid #d72323;
     padding:2rem;
     opacity: 80%;
     background-color: #3c3c3c24;
@@ -168,6 +168,10 @@ footer a {
     font-size: 1.25rem;
     line-height: 2rem;
     color:#3a4750;
+    background-color: #3c3c3c24;
+    border-radius: 8px;
+    padding: 3rem;
+
 
 }
 /* RESPONSIVE */

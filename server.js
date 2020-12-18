@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 // Serve Static Assets
 app.use(express.static('public'));
 
-console.log(__dirname)
-console.log("Server Started");
+// console.log(__dirname)
+// console.log("Server Started");
 
 app.get('/', (req, res) => {
     res.sendFile('./views/index.html', { root: __dirname });
@@ -17,12 +17,15 @@ app.get('/', (req, res) => {
 app.use((req, res) => {
     res.status(404).sendFile('./views/404.html', { root: __dirname });
   });
+  
 app.listen(port, err => {
     if (err) {
       throw new Error("There was an error");
     }
     console.log(`Server is listening on ${port}`);
   });
+
+
 //   NODEJS
 // const http = require('http');
 // const port = process.env.PORT || 3000;

@@ -48,7 +48,8 @@ $ npm install
 $ nodemon server.js
 ```
 ## Features
-* The awesome pictures are royalty free from [Unsplash](https://unsplash.com/)
+* The awesome pictures are royalty free from [Unsplash](https://unsplash.com/);
+* Icons from [Fontawesome](https://fontawesome.com/)
 
 ## To DO
 * Display the list better;
